@@ -1,0 +1,834 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Shopping Portal</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root {
+            --primary: #2a9d8f;
+            --secondary: #264653;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #495057;
+            --border: #dee2e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(38, 70, 83, 0.2);
+            z-index: 0;
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: var(--secondary);
+            margin-bottom: 35px;
+            font-weight: 700;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 25px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            color: var(--dark);
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+            outline: none;
+            background: white;
+        }
+
+        .input-group i {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            color: var(--text);
+            opacity: 0.6;
+            font-size: 18px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(38, 70, 83, 0.3);
+        }
+
+        .toggle-form {
+            margin-top: 25px;
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .toggle-form a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .divider::before {
+            margin-right: 20px;
+        }
+
+        .divider::after {
+            margin-left: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .google {
+            background: #DB4437;
+        }
+
+        .facebook {
+            background: #4267B2;
+        }
+
+        .github {
+            background: #333333;
+        }
+
+        .twitter {
+            background: #1DA1F2;
+        }
+
+        @media (max-width: 600px) {
+            .register-container {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+        }
+        .error-message{
+            color: red;
+            font-size: 0.75rem;
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="register-container">
+        <h1>Create Account</h1>
+        <form id="signform" method="post" action="/signup">
+            <div class="input-group">
+                <input type="text" placeholder="Full Name" name="name" id="name" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div id="error1" class="error-message"></div>
+            <div class="input-group">
+                <input type="email" placeholder="Email Address" name="email" id="email" required>
+                <i class='bx bxs-envelope'></i>
+            </div>
+            <div id="error2" class="error-message"></div>
+            <div class="input-group">
+                <input type="tel" placeholder="Phone Number" name="phone" id="phone" required>
+                <i class='bx bxs-phone'></i>
+            </div>
+            <div id="error3" class="error-message"></div>
+            <div class="input-group">
+                <input type="password" placeholder="Password (min 8 characters)" name="password" id="password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div id="error4" class="error-message"></div>
+            <div class="input-group">
+                <input type="password" placeholder="Confirm Password" name="cPassword" id="confirm-password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div id="error5" class="error-message"></div>
+            <button type="submit" class="btn">Register Now</button>
+            <div class="toggle-form">
+                Already have an account? <a href="login.html">Sign In</a>
+            </div>
+            <div class="divider">or sign up with</div>
+            <div class="social-icons">
+                <a href="#" class="google" title="Google"><i class='bx bxl-google'></i></a>
+                <a href="#" class="facebook" title="Facebook"><i class='bx bxl-facebook'></i></a>
+                <a href="#" class="github" title="GitHub"><i class='bx bxl-github'></i></a>
+                <a href="#" class="twitter" title="Twitter"><i class='bx bxl-twitter'></i></a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const nameid = document.getElementById("name");
+        const emailid = document.getElementById("email");
+        const phoneid = document.getElementById("phone");
+        const passid = document.getElementById("password");
+        const cpassid = document.getElementById("confirm-password");
+
+        const error1 = document.getElementById("error1");
+        const error2 = document.getElementById("error2");
+        const error3 = document.getElementById("error3");
+        const error4 = document.getElementById("error4");
+        const error5 = document.getElementById("error5");
+
+        const signform = document.getElementById("signform");
+
+        function nameValidateChecking(e) {
+            const nameval = nameid.value;
+            const namepattern = /^[A-Za-z\s]+$/;
+
+            if (nameval.trim() === "") {
+                error1.style.display = "block";
+                error1.innerHTML = "Please enter a valid name";
+            } else if (!namepattern.test(nameval)) {
+                error1.style.display = "block";
+                error1.innerHTML = "Name can only contains alphabets and spaces";
+            } else {
+                error1.style.display = "none";
+                error1.innerHTML = "";
+            }
+        }
+
+        function emailValidateChecking(e) {
+            const emailval = emailid.value;
+            const emailpattern = /^([a-zA-Z0-9._-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,4})$/;
+
+            if (!emailpattern.test(emailval)) {
+                error2.style.display = "block";
+                error2.innerHTML = "Invalid format";
+            } else {
+                error2.style.display = "none";
+                error2.innerHTML = "";
+            }
+
+        }
+
+        function phoneValidateChecking(e){
+            const phoneval = phoneid.value;
+
+            if (phoneval.trim() === "") {
+                error3.style.display = "block";
+                error3.innerHTML = "Enter valid phone number";
+            } else if(phoneval.length<10 || phoneval.length>10) {
+                error3.style.display = "block";
+                error3.innerHTML = "Enter the 10 digit number";
+            }
+            else {
+                error3.style.display = "none";
+                error3.innerHTML = "";
+            }
+        }
+
+        function passValidateChecking(e) {
+            const passval = passid.value;
+            const cpassval = cpassid.value;
+            const alpha = /[a-zA-Z]/;
+            const digit = /\d/;
+
+            if (passval.length < 8) {
+                error4.style.display = "block";
+                error4.innerHTML = "Should contain at least 8 characters";
+            } else if (!alpha.test(passval) || !digit.test(passval)) {
+                error4.style.display = "block";
+                error4.innerHTML = "Should contain numbers and alphabets";
+            } else if (passval !== cpassval) {
+                error4.style.display = "block";
+                error4.innerHTML = "Passwords do not match";
+            } else {
+                error4.style.display = "none";
+                error4.innerHTML = "";
+            }
+            if (passval !== cpassval) {
+                error5.style.display = "block";
+                error5.innerHTML = "Passwords do not match";
+            } else {
+                error5.style.display = "none";
+                error5.innerHTML = "";
+            }        
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            signform.addEventListener("submit", function (e) {
+
+                nameValidateChecking();
+                emailValidateChecking();
+                phoneValidateChecking();
+                passValidateChecking();
+
+                if (
+                    !nameid ||
+                    !emailid ||
+                    !phoneid ||
+                    !passid ||
+                    !error1 ||
+                    !error2 ||
+                    !error3 ||
+                    !error4 ||
+                    !error5 ||
+                    !signform
+                ) {
+                    console.error("One or more elements not found");
+                }
+
+                if (
+                    error1.innerHTML ||
+                    error2.innerHTML ||
+                    error3.innerHTML ||
+                    error4.innerHTML ||
+                    error5.innerHTML
+                ) {
+                    e.preventDefault();
+                }
+            })
+        })
+    </script>
+
+</body>
+
+</html> -->
+
+
+<!-- ----------Revised version----------- -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Shopping Portal</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root {
+            --primary: #2a9d8f;
+            --secondary: #264653;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #495057;
+            --border: #dee2e6;
+            --error: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(38, 70, 83, 0.2);
+            z-index: 0;
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: var(--secondary);
+            margin-bottom: 35px;
+            font-weight: 700;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 25px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            color: var(--dark);
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+            outline: none;
+            background: white;
+        }
+
+        .input-group input.invalid {
+            border-color: var(--error);
+            background: #fff5f5;
+        }
+
+        .input-group i {
+            position: absolute;
+            right: 20px;
+            top: 40px; /* Adjusted for label */
+            color: var(--text);
+            opacity: 0.6;
+            font-size: 18px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(38, 70, 83, 0.3);
+        }
+
+        .toggle-form {
+            margin-top: 25px;
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .toggle-form a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .divider::before {
+            margin-right: 20px;
+        }
+
+        .divider::after {
+            margin-left: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .google {
+            background: #DB4437;
+        }
+
+        .facebook {
+            background: #4267B2;
+        }
+
+        .github {
+            background: #333333;
+        }
+
+        .twitter {
+            background: #1DA1F2;
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 0.75rem;
+            margin-top: 5px;
+            padding: 4px 8px;
+            background: #fff5f5;
+            border-radius: 4px;
+            display: none;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            .register-container {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .input-group label {
+                font-size: 12px;
+            }
+
+            .input-group input {
+                padding: 10px 20px;
+            }
+
+            .input-group i {
+                top: 36px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register-container">
+        <h1>Create Account</h1>
+        <form id="signform" method="post" action="/signup">
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" placeholder="Enter your full name" name="name" id="name" required aria-describedby="error1">
+                <i class='bx bxs-user'></i>
+                <div id="error1" class="error-message"></div>
+            </div>
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" placeholder="Enter your email" name="email" id="email" required aria-describedby="error2">
+                <i class='bx bxs-envelope'></i>
+                <div id="error2" class="error-message"></div>
+            </div>
+            <div class="input-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" placeholder="Enter your phone number" name="phone" id="phone" required aria-describedby="error3">
+                <i class='bx bxs-phone'></i>
+                <div id="error3" class="error-message"></div>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" placeholder="Minimum 8 characters" name="password" id="password" required aria-describedby="error4">
+                <i class='bx bxs-lock-alt'></i>
+                <div id="error4" class="error-message"></div>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" placeholder="Confirm your password" name="cPassword" id="confirm-password" required aria-describedby="error5">
+                <i class='bx bxs-lock-alt'></i>
+                <div id="error5" class="error-message"></div>
+            </div>
+            <button type="submit" class="btn">Register Now</button>
+            <div class="toggle-form">
+                Already have an account? <a href="login.html">Sign In</a>
+            </div>
+            <div class="divider">or sign up with</div>
+            <div class="social-icons">
+                <a href="#" class="google" title="Google"><i class='bx bxl-google'></i></a>
+                <a href="#" class="facebook" title="Facebook"><i class='bx bxl-facebook'></i></a>
+                <a href="#" class="github" title="GitHub"><i class='bx bxl-github'></i></a>
+                <a href="#" class="twitter" title="Twitter"><i class='bx bxl-twitter'></i></a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const nameid = document.getElementById("name");
+        const emailid = document.getElementById("email");
+        const phoneid = document.getElementById("phone");
+        const passid = document.getElementById("password");
+        const cpassid = document.getElementById("confirm-password");
+
+        const error1 = document.getElementById("error1");
+        const error2 = document.getElementById("error2");
+        const error3 = document.getElementById("error3");
+        const error4 = document.getElementById("error4");
+        const error5 = document.getElementById("error5");
+
+        const signform = document.getElementById("signform");
+
+        function nameValidateChecking() {
+            const nameval = nameid.value.trim();
+            const namepattern = /^[A-Za-z\s]+$/;
+
+            if (nameval === "") {
+                error1.style.display = "block";
+                error1.innerHTML = "Please enter a valid name";
+                nameid.classList.add("invalid");
+                nameid.setAttribute("aria-invalid", "true");
+            } else if (!namepattern.test(nameval)) {
+                error1.style.display = "block";
+                error1.innerHTML = "Name can only contain alphabets and spaces";
+                nameid.classList.add("invalid");
+                nameid.setAttribute("aria-invalid", "true");
+            } else {
+                error1.style.display = "none";
+                error1.innerHTML = "";
+                nameid.classList.remove("invalid");
+                nameid.setAttribute("aria-invalid", "false");
+            }
+        }
+
+        function emailValidateChecking() {
+            const emailval = emailid.value.trim();
+            const emailpattern = /^([a-zA-Z0-9._-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,4})$/;
+
+            if (!emailpattern.test(emailval)) {
+                error2.style.display = "block";
+                error2.innerHTML = "Invalid email format";
+                emailid.classList.add("invalid");
+                emailid.setAttribute("aria-invalid", "true");
+            } else {
+                error2.style.display = "none";
+                error2.innerHTML = "";
+                emailid.classList.remove("invalid");
+                emailid.setAttribute("aria-invalid", "false");
+            }
+        }
+
+        function phoneValidateChecking() {
+            const phoneval = phoneid.value.trim();
+
+            if (phoneval === "") {
+                error3.style.display = "block";
+                error3.innerHTML = "Enter a valid phone number";
+                phoneid.classList.add("invalid");
+                phoneid.setAttribute("aria-invalid", "true");
+            } else if (phoneval.length !== 10 || isNaN(phoneval)) {
+                error3.style.display = "block";
+                error3.innerHTML = "Enter a 10-digit number";
+                phoneid.classList.add("invalid");
+                phoneid.setAttribute("aria-invalid", "true");
+            } else {
+                error3.style.display = "none";
+                error3.innerHTML = "";
+                phoneid.classList.remove("invalid");
+                phoneid.setAttribute("aria-invalid", "false");
+            }
+        }
+
+        function passValidateChecking() {
+            const passval = passid.value;
+            const cpassval = cpassid.value;
+            const alpha = /[a-zA-Z]/;
+            const digit = /\d/;
+
+            if (passval.length < 8) {
+                error4.style.display = "block";
+                error4.innerHTML = "Password must be at least 8 characters";
+                passid.classList.add("invalid");
+                passid.setAttribute("aria-invalid", "true");
+            } else if (!alpha.test(passval) || !digit.test(passval)) {
+                error4.style.display = "block";
+                error4.innerHTML = "Password must contain letters and numbers";
+                passid.classList.add("invalid");
+                passid.setAttribute("aria-invalid", "true");
+            } else {
+                error4.style.display = "none";
+                error4.innerHTML = "";
+                passid.classList.remove("invalid");
+                passid.setAttribute("aria-invalid", "false");
+            }
+
+            if (passval !== cpassval) {
+                error5.style.display = "block";
+                error5.innerHTML = "Passwords do not match";
+                cpassid.classList.add("invalid");
+                cpassid.setAttribute("aria-invalid", "true");
+            } else {
+                error5.style.display = "none";
+                error5.innerHTML = "";
+                cpassid.classList.remove("invalid");
+                cpassid.setAttribute("aria-invalid", "false");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Real-time validation
+            nameid.addEventListener("input", nameValidateChecking);
+            emailid.addEventListener("input", emailValidateChecking);
+            phoneid.addEventListener("input", phoneValidateChecking);
+            passid.addEventListener("input", passValidateChecking);
+            cpassid.addEventListener("input", passValidateChecking);
+
+            signform.addEventListener("submit", function (e) {
+                nameValidateChecking();
+                emailValidateChecking();
+                phoneValidateChecking();
+                passValidateChecking();
+
+                if (
+                    error1.innerHTML ||
+                    error2.innerHTML ||
+                    error3.innerHTML ||
+                    error4.innerHTML ||
+                    error5.innerHTML
+                ) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
