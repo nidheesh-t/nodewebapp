@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Login Page">
+    <meta name="keywords" content="Male_Fashion, shopping, login, fashion">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log In - Male Fashion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #22223b;
+            --accent: #fef9ef;
+            --text: #22223b;
+            --border: #e0e0e0;
+            --shadow: rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(254, 249, 239, 0.8)), 
+                        url('https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            background-size: cover;
+            overflow: auto;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 25px;
+            box-shadow: 0 10px 40px var(--shadow);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-section {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .login-form, .login-image {
+            flex: 1;
+            padding: 50px;
+        }
+
+        .login-form {
+            max-width: 50%;
+        }
+
+        .login-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 50%;
+            background: linear-gradient(180deg, rgba(255, 107, 107, 0.05), rgba(255, 255, 255, 0.15));
+        }
+
+        .login-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .login-image img:hover {
+            transform: scale(1.03);
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 5px var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            position: absolute;
+            top: 14px;
+            left: 15px;
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 10px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            background: white;
+            padding: 0 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 15px;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.85);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+            background: white;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(34, 34, 59, 0.3);
+        }
+
+        .social-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .social-btns a {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px var(--shadow);
+        }
+
+        .social-btns a:hover {
+            transform: translateY(-4px);
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .social-btns a img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .login-image .sign-up-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .login-image .sign-up-link:hover {
+            color: var(--primary);
+        }
+
+        .alert-danger {
+            background: rgba(255, 107, 107, 0.15);
+            color: #d63031;
+            border: 1px solid #ff6b6b;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .error-message {
+            color: #d63031;
+            font-size: 0.85rem;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .or-text {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text);
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .login-section {
+                flex-direction: column;
+            }
+            .login-form, .login-image {
+                max-width: 100%;
+                padding: 30px;
+            }
+            .login-image img {
+                max-width: 80%;
+            }
+            .card-title {
+                font-size: 1.8rem;
+            }
+            .card {
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card {
+                margin: 15px;
+                border-radius: 20px;
+            }
+            .login-form, .login-image {
+                padding: 20px;
+            }
+            .login-image img {
+                max-width: 70%;
+            }
+            .card-title {
+                font-size: 1.5rem;
+            }
+            .social-btns a {
+                width: 50px;
+                height: 50px;
+            }
+            .social-btns a img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body login-section">
+                <div class="login-form">
+                    <h3 class="card-title">Log In</h3>
+                    <form id="loginform" method="POST" action="/login">
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" id="email" placeholder=" " required>
+                            <label for="email">Email Address</label>
+                            <div id="error1" class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id="password" placeholder=" " required>
+                            <label for="password">Password</label>
+                            <div id="error2" class="error-message"></div>
+                        </div>
+                        <% if(locals.message && message.length>0){ %>
+                            <div class="alert alert-danger">
+                                <%=message%>
+                            </div>
+                        <% } %>
+                        <button type="submit" class="btn btn-primary">Log In</button>
+                        <div class="or-text">or log in with</div>
+                        <div class="social-btns">
+                            <a href="/auth/google" class="btn">
+                                <img src="https://www.google.com/favicon.ico" alt="Google Logo">
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="login-image">
+                    <a href="/">
+                        <img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Male Fashion Collection">
+                    </a>
+                    <div class="text-center mt-4">
+                        <a href="/register" class="sign-up-link">Not registered? Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const emailid = document.getElementById("email");
+        const passid = document.getElementById("password");
+        const error1 = document.getElementById("error1");
+        const error2 = document.getElementById("error2");
+        const loginform = document.getElementById("loginform");
+
+        function emailValidateChecking() {
+            const emailval = emailid.value;
+            const emailpattern = /^[a-zA-Z0-9._-]+@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,4})$/;
+
+            if (!emailpattern.test(emailval)) {
+                error1.style.display = "block";
+                error1.innerHTML = "Invalid email format";
+            } else {
+                error1.style.display = "none";
+                error1.innerHTML = "";
+            }
+        }
+
+        function passValidateChecking() {
+            const passval = passid.value;
+            if (passval.length < 8) {
+                error2.style.display = "block";
+                error2.innerHTML = "Password must be at least 8 characters";
+            } else {
+                error2.style.display = "none";
+                error2.innerHTML = "";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            loginform.addEventListener("submit", function (e) {
+                emailValidateChecking();
+                passValidateChecking();
+
+                if (error1.innerHTML || error2.innerHTML) {
+                    e.preventDefault();
+                }
+            });
+
+            emailid.addEventListener("input", emailValidateChecking);
+            passid.addEventListener("input", passValidateChecking);
+        });
+    </script>
+</body>
+</html>
