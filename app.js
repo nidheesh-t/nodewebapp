@@ -6,6 +6,7 @@ const passport = require("./config/passport");
 const env = require("dotenv").config();
 const db = require("./config/db");
 const userRouter = require("./routes/userRouter");
+const adminRouter = require("./routes/adminRouter");
 const MongoStore = require("connect-mongo");
 
 // Connect to DB
@@ -44,15 +45,21 @@ app.use((req, res, next) => {
 // View engine setup
 app.set("view engine", "ejs");
 app.set("views", [
+    path.join(__dirname, "views"),
     path.join(__dirname, "views/user"), 
     path.join(__dirname, "views/admin")
 ]);
+
+// app.set("views", path.join(__dirname, "views"));
+
+
 
 // Static files
 app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 app.use("/", userRouter);
+app.use("/admin", adminRouter)
 
 // Prevent caching
 app.use((req, res, next) => {
