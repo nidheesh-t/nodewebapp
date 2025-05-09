@@ -2,7 +2,7 @@ const Category = require("../../models/categorySchema");
 
 const categoryInfo = async (req, res) => {
     try {
-        console.log("Fetching categories...");
+//        console.log("Fetching categories...");
         const page = parseInt(req.query.page) || 1;
         const limit = 4;
         const skip = (page - 1) * limit;
@@ -11,12 +11,12 @@ const categoryInfo = async (req, res) => {
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit);
-        console.log("Categories fetched:", categoryData);
+//        console.log("Categories fetched:", categoryData);
             
         const totalCategories = await Category.countDocuments();
         const totalPages = Math.ceil(totalCategories / limit);
         
-        console.log("Rendering category page...");
+//        console.log("Rendering category page...");
         res.render("admin/category", {
             cat: categoryData,
             currentPage: page,

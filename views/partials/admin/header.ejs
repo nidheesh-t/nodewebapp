@@ -13,124 +13,150 @@
     <link rel="shortcut icon" type="image/x-icon" href="#">
     <link href="/admin-assets/css/main.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/16d4885483.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
-            --accent-color: #3498db;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --hover-color: #2980b9;
-            --text-color: #333;
-            --text-light: #fff;
+            --primary-color: #008080;  /* Teal */
+            --secondary-color: #006666;
+            --accent-color: #00b3b3;
+            --light-color: #ffffff;
+            --dark-color: #004d4d;
+            --hover-color: #00cccc;
+            --text-color: #333333;
+            --text-light: #ffffff;
+            --sidebar-width: 280px;
+            --border-radius: 12px;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
         
         body {
             background-color: #f5f7fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
         }
         
         .navbar {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 0.8rem 1rem;
+            background: var(--light-color);
+            box-shadow: var(--card-shadow);
+            padding: 0.8rem 2rem;
+            height: 70px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
         }
         
         .navbar-aside {
-            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            background: var(--light-color);
+            box-shadow: var(--card-shadow);
+            width: var(--sidebar-width);
+            position: fixed;
+            height: 100vh;
+            z-index: 1000;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
         }
         
         .brand-wrap {
-            padding: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
         .brand-wrap .logo {
-            max-height: 40px;
-            filter: brightness(0) invert(1);
+            max-height: 36px;
         }
         
         .menu-aside {
-            padding: 1rem 0;
+            padding: 1.5rem 0.5rem;
         }
         
         .menu-item a.menu-link {
-            color: var(--light-color);
-            padding: 0.8rem 1.5rem;
-            margin: 0.2rem 0;
-            border-radius: 0;
-            transition: all 0.3s ease;
+            color: var(--text-color);
+            padding: 0.9rem 1.5rem;
+            margin: 0.3rem 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
             display: flex;
             align-items: center;
-            font-weight: 500;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
         }
         
         .menu-item a.menu-link:hover,
         .menu-item a.menu-link.active {
-            background-color: var(--hover-color);
+            background: var(--primary-color);
             color: var(--text-light);
             transform: translateX(5px);
         }
         
         .menu-item a.menu-link .icon {
-            margin-right: 10px;
-            font-size: 1.2rem;
-            color: var(--light-color);
+            margin-right: 12px;
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
         }
         
         .dropdown-menu {
             background-color: var(--light-color);
             border: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            box-shadow: var(--card-shadow);
+            border-radius: var(--border-radius);
             padding: 0.5rem 0;
+            min-width: 200px;
         }
         
         .dropdown-item {
-            padding: 0.5rem 1.5rem;
+            padding: 0.7rem 1.5rem;
             color: var(--text-color);
-            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            border-radius: 6px;
+            margin: 0 0.5rem;
+            width: auto;
         }
         
         .dropdown-item:hover {
-            background-color: var(--accent-color);
+            background-color: var(--primary-color);
             color: var(--text-light);
         }
         
         .dropdown-item i {
-            margin-right: 8px;
-        }
-        
-        .dropdown-toggle img {
-            border: 2px solid var(--light-color);
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-toggle:hover img {
-            border-color: var(--accent-color);
-            transform: scale(1.05);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
         }
         
         .main-wrap {
-            background-color: #f5f7fa;
+            margin-left: var(--sidebar-width);
+            padding-top: 70px;
+            min-height: calc(100vh - 70px);
         }
         
         .btn-icon {
-            color: var(--light-color);
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            background: rgba(0, 128, 128, 0.1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
             transition: all 0.3s ease;
         }
         
         .btn-icon:hover {
-            color: var(--accent-color);
-            transform: scale(1.1);
+            color: var(--text-light);
+            background: var(--primary-color);
+            transform: scale(1.05);
         }
         
         .screen-overlay {
             background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
         }
         
         /* Animation for menu items */
@@ -153,6 +179,16 @@
         .menu-item:nth-child(7) { animation-delay: 0.7s; }
         .menu-item:nth-child(8) { animation-delay: 0.8s; }
         .menu-item:nth-child(9) { animation-delay: 0.9s; }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .navbar-aside {
+                transform: translateX(-100%);
+            }
+            .main-wrap {
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -163,50 +199,50 @@
                 <img src="/img/logo.png" class="logo" alt="Men Fashion Dashboard">
             </a>
             <div>
-                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="fas fa-chevron-left"></i> </button>
             </div>
         </div>
         <nav>
             <ul class="menu-aside">
                 <li class="menu-item">
-                    <a class="menu-link" href="/admin"> <i class="icon material-icons md-home"></i>
+                    <a class="menu-link" href="/admin"> <i class="icon fas fa-home"></i>
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="/admin/users"> <i class="icon material-icons md-person"></i>
+                    <a class="menu-link" href="/admin/users"> <i class="icon fas fa-users"></i>
                         <span class="text">Customers</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="/admin/category"> <i class="icon material-icons md-person"></i>
+                    <a class="menu-link" href="/admin/category"> <i class="icon fas fa-tags"></i>
                         <span class="text">Category</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="/admin/brands"> <i class="icon material-icons md-stars"></i>
+                    <a class="menu-link" href="/admin/brands"> <i class="icon fas fa-star"></i>
                         <span class="text">Brands</span> </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="/admin/addProducts"> <i class="icon material-icons md-add_box"></i>
+                    <a class="menu-link" href="/admin/addProducts"> <i class="icon fas fa-plus-circle"></i>
                         <span class="text">Add product</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="/admin/products"> <i class="icon material-icons md-shopping_bag"></i>
+                    <a class="menu-link" href="/admin/products"> <i class="icon fas fa-box-open"></i>
                         <span class="text">Products</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="/admin/coupon"> <i class="icon material-icons md-class"></i>
+                    <a class="menu-link" href="/admin/coupon"> <i class="icon fas fa-ticket-alt"></i>
                         <span class="text">Coupon</span> </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="/admin/banner"> <i class="icon material-icons md-photo_size_select_actual"></i>
+                    <a class="menu-link" href="/admin/banner"> <i class="icon fas fa-image"></i>
                         <span class="text">Banner</span> </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="/admin/orderList"> <i class="icon material-icons md-shopping_cart"></i>
+                    <a class="menu-link" href="/admin/orderList"> <i class="icon fas fa-shopping-cart"></i>
                         <span class="text">Orders</span>
                     </a>
                 </li>
@@ -218,15 +254,20 @@
             <div class="col-search">
             </div>
             <div class="col-nav">
-                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="fas fa-bars"></i> </button>
                 <ul class="nav">
                     <li class="dropdown nav-item">
-                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/admin-assets/imgs/people/avatar2.jpg" alt="User"></a>
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false">
+                            <i class="fas fa-user-circle" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                        </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="/admin/logout"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                            <a class="dropdown-item text-danger" href="/admin/logout">
+                                <i class="fas fa-sign-out-alt"></i>Logout
+                            </a>
                         </div>
                     </li>
                 </ul>
             </div>
         </header>
+        <!-- Your main content goes here -->
