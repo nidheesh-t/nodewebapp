@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const { v4: uuidv4 } = require('uuid');
 
 const orderSchema = new Schema({
     orderId: {
@@ -40,14 +41,21 @@ const orderSchema = new Schema({
         required: true
     },
     invoiceDate: {
-        type: Date
+        type: Date,
+        default: Date.now
     },
     status: {
         type: String,
         required: true,
         enum: ["Pending", "Processing", "Shipped", "Delivered", "Cancelled", "Return request", "Returned"]
     },
-    createdOn: {
+    paymentMethod: {
+        type: String,
+        required: true,
+        enum: ["Credit Card", "Debit Card", "Net Banking", "Wallet", "Cash on Delivery", "UPI"],
+        default: "Cash on Delivery"
+    },
+    createdAt: {
         type: Date,
         default: Date.now,
         required: true
@@ -56,7 +64,7 @@ const orderSchema = new Schema({
         type: Boolean,
         default: false
     }
-});
+}, { timestamps: true });
 
 const Order = mongoose.model("Order", orderSchema);
 

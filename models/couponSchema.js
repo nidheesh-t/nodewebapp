@@ -7,7 +7,7 @@ const couponSchema = new Schema({
         required: true,
         unique: true
     },
-    createdOn:{
+    createdAt:{
         type:Date,
         default: Date.now,
         required: true
@@ -32,7 +32,7 @@ const couponSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:"User"
     }]
-});
+}, { timestamps: true });
 
 const Coupon = mongoose.model("Coupon", couponSchema);
 

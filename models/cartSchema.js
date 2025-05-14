@@ -25,16 +25,12 @@ const cartSchema = new Schema({
             type: Number,
             required: true
         },
-        status: {
-            type: String,
-            default: "placed"
-        },
-        cancellationReason: {
-            type: String,
-            default: "none"
+        updatedAt: {
+            type: Date,
+            default: Date.now
         }
     }]
-});
+}, { timestamps: true });
 
 const Cart = mongoose.model("Cart", cartSchema);
 

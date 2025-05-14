@@ -33,7 +33,7 @@ const productSchema = new Schema({
     },
     quantity: {
         type: Number,
-        default: true
+        default: 1
     },
     color: {
         type: String,
@@ -43,13 +43,13 @@ const productSchema = new Schema({
         type: [String],
         required: true
     },
-    isBlock: {
+    isBlocked: {
         type: Boolean,
         default: false
     },
     status: {
         type: String,
-        enum: ["Available", "Out of Stock", "Discountinued"],
+        enum: ["Available", "Out of Stock", "Discontinued"],
         required: true,
         default: "Available"
     },

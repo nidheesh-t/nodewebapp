@@ -38,10 +38,14 @@ const addressSchema = new Schema({
         },
         altPhone: {
             type: String,
-            required: true
+            required: false
         }
-    }]
-})
+    }],
+    isDefault:{
+        type: Boolean,
+        default: true
+    }
+}, { timestamps: true })
 
 const Address = mongoose.model("Address", addressSchema);
 

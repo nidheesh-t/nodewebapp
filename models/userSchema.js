@@ -43,7 +43,7 @@ const userSchema = new Schema({
         type: Number,
         default: 0
     },
-    Wishlist: [{
+    wishlist: [{
         type: Schema.Types.ObjectId,
         ref: "Wishlist"
     }],
@@ -51,15 +51,16 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Order"
     }],
-    createdOn: {
+    createdAt: {
         type: Date,
         default: Date.now
     },
-    referalCode: {
+    referralCode: {
         type: String
     },
     redeemed: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     redeemedUsers: [{
         type: Schema.Types.ObjectId,
@@ -78,7 +79,7 @@ const userSchema = new Schema({
             default: Date.now
         }
     }]
-})
+}, { timestamps: true })
 
 const User = mongoose.model("User", userSchema);
 

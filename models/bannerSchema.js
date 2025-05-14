@@ -17,6 +17,10 @@ const bannerSchema = new Schema({
     link:{
         type:String,
     },
+    isActive:{
+        type: Boolean,
+        default: true
+    },
     startDate:{
         type:Date,
         required: true
@@ -25,7 +29,7 @@ const bannerSchema = new Schema({
         type:Date,
         required: true
     }
-});
+}, { timestamps: true });
 
 const Banner = mongoose.model("Banner", bannerSchema);
 

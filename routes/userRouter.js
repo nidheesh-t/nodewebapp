@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const userController = require("../controllers/user/userController");
+const profileController = require("../controllers/user/profileController")
+const { userAuth } = require("../middlewares/auth");
 
 // Existing routes
 router.get("/pageNotFound", userController.pageNotFound);
@@ -26,6 +28,7 @@ router.post("/login", userController.login);
 
 router.get("/logout", userController.logout);
 
+router.get("/userProfile", userAuth, profileController.userProfile)
 
 
 
