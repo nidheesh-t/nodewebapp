@@ -8,6 +8,7 @@ const db = require("./config/db");
 const userRouter = require("./routes/userRouter");
 const adminRouter = require("./routes/adminRouter");
 const MongoStore = require("connect-mongo");
+const nocache = require("nocache");
 
 // Connect to DB
 db();
@@ -16,21 +17,15 @@ db();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(nocache())
+
 // Session configuration
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({ 
-        mongoUrl: process.env.MONGODB_URI,
-        ttl: 24 * 60 * 60 // 1 day
-    }),
-    cookie: {
-        secure: process.env.NODE_ENV === "production",
-        httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000 // 1 day
-    }
-}));
+    saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 } // 1 hour
+}))
 
 // Passport initialization
 app.use(passport.initialize());
@@ -50,9 +45,6 @@ app.set("views", [
     path.join(__dirname, "views/admin")
 ]);
 
-// app.set("views", path.join(__dirname, "views"));
-
-
 
 // Static files
 app.use(express.static(path.join(__dirname, "public")));
@@ -64,7 +56,7 @@ app.use("/admin", adminRouter)
 
 // Prevent caching
 app.use((req, res, next) => {
-    res.set("Cache-Control", "no-store");
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
     next();
 });
 

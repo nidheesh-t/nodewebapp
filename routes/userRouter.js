@@ -30,18 +30,18 @@ router.get("/logout", userController.logout);
 
 router.get("/userProfile", userAuth, profileController.userProfile)
 
+router.get("/forgot-password", profileController.getForgotPassPage);
+router.post("/forgot-email-valid", profileController.forgotEmailValid);
+router.post("/verify-passForgot-otp", profileController.verifyForgotPassOtp);
+router.get("/reset-password", profileController.getResetPassPage);
+router.post("/resend-forgot-otp", profileController.resendOtp);
+router.post("/reset-password", profileController.postNewPassword);
 
 
-// New logout route
-// router.get("/logout", (req, res) => {
-//     req.logout((err) => {
-//         if (err) {
-//             console.log("Logout error:", err);
-//             return res.redirect('/');
-//         }
-//         req.session.destroy();
-//         res.redirect('/login');
-//     });
-// });
+
+
+
+
+
 
 module.exports = router;
